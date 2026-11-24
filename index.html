@@ -1,0 +1,1507 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>npxvip最新每日比赛_赛事影像平台,每日赛事精彩高清呈现</title>
+<meta name="description" content="npxvip最新每日比赛官方网站，专注每日赛事影像、参赛记录与创作者社区，提供高清原创赛事内容与专业比赛解析，持续运营值得信赖。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161826'/%3E%3Cpath d='M18 20h10l4 10 4-10h10L32 50z' fill='%2300e5a0'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --nk-bg:#12141f;
+    --nk-panel:#1a1d2c;
+    --nk-panel-2:#212539;
+    --nk-line:#2c3149;
+    --nk-text:#e8ecf7;
+    --nk-muted:#9aa3bd;
+    --nk-neon:#00e5a0;
+    --nk-neon-soft:rgba(0,229,160,.14);
+    --nk-violet:#7b5cff;
+    --nk-amber:#ffb547;
+    --nk-radius:16px;
+    --nk-head-h:114px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nk-head-h)}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(123,92,255,.22), transparent 60%),
+      radial-gradient(900px 480px at 5% 0%, rgba(0,229,160,.12), transparent 55%),
+      var(--nk-bg);
+    color:var(--nk-text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer}
+  h1,h2,h3,h4{margin:0;line-height:1.3;font-weight:800}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  .nk-wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+
+  /* ============ 顶部公告条 + 页头（吸顶） ============ */
+  .nk-sticky-shell{
+    position:sticky;top:0;z-index:80;
+    backdrop-filter:blur(14px);
+    background:rgba(18,20,31,.92);
+    border-bottom:1px solid var(--nk-line);
+  }
+  .nk-ticker{
+    display:flex;align-items:center;gap:14px;
+    padding:8px 0;
+    font-size:13px;
+    border-bottom:1px solid rgba(44,49,73,.7);
+    background:linear-gradient(90deg,rgba(0,229,160,.10),rgba(123,92,255,.10));
+  }
+  .nk-ticker-badge{
+    flex:0 0 auto;
+    display:inline-flex;align-items:center;gap:6px;
+    padding:2px 10px;border-radius:999px;
+    background:var(--nk-neon);color:#08201a;
+    font-weight:800;font-size:12px;letter-spacing:.5px;
+  }
+  .nk-ticker-roll{position:relative;flex:1;overflow:hidden;height:22px}
+  .nk-ticker-item{
+    position:absolute;inset:0;display:flex;align-items:center;gap:8px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    color:var(--nk-muted);
+    opacity:0;transform:translateY(10px);
+    transition:opacity .45s ease,transform .45s ease;
+  }
+  .nk-ticker-item.is-on{opacity:1;transform:translateY(0)}
+  .nk-ticker-item b{color:var(--nk-text);font-weight:600}
+  .nk-ticker-time{color:var(--nk-amber);font-variant-numeric:tabular-nums}
+
+  .nk-header-inner{
+    display:flex;align-items:center;gap:22px;
+    padding:14px 0;
+  }
+  .nk-logo{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .nk-logo-mark{
+    width:40px;height:40px;border-radius:12px;
+    background:linear-gradient(140deg,var(--nk-neon),#0aa9ff 55%,var(--nk-violet));
+    display:grid;place-items:center;
+    font-weight:900;color:#08131c;font-size:15px;letter-spacing:-.5px;
+    box-shadow:0 8px 22px rgba(0,229,160,.28);
+  }
+  .nk-logo-text{display:flex;flex-direction:column;line-height:1.2}
+  .nk-logo-text strong{font-size:17px;letter-spacing:.3px}
+  .nk-logo-text span{font-size:11px;color:var(--nk-muted);letter-spacing:2px}
+
+  .nk-nav{flex:1;min-width:0}
+  .nk-nav ul{display:flex;gap:4px;flex-wrap:wrap}
+  .nk-nav a{
+    display:inline-block;padding:7px 12px;border-radius:9px;
+    font-size:14px;color:var(--nk-muted);
+    transition:color .2s,background .2s;
+  }
+  .nk-nav a:hover,.nk-nav a:focus-visible{color:var(--nk-text);background:var(--nk-panel-2);outline:none}
+
+  .nk-head-tools{display:flex;align-items:center;gap:10px;flex:0 0 auto}
+  .nk-search{
+    display:flex;align-items:center;gap:8px;
+    background:var(--nk-panel);
+    border:1px solid var(--nk-line);
+    border-radius:999px;padding:6px 6px 6px 14px;
+    transition:border-color .2s,box-shadow .2s;
+  }
+  .nk-search:focus-within{border-color:var(--nk-neon);box-shadow:0 0 0 3px var(--nk-neon-soft)}
+  .nk-search input{
+    width:150px;background:transparent;border:0;outline:none;
+    color:var(--nk-text);font-size:13.5px;
+  }
+  .nk-search input::placeholder{color:#6c7592}
+  .nk-search button{
+    border:0;border-radius:999px;padding:6px 14px;
+    background:var(--nk-neon);color:#08201a;font-weight:800;font-size:13px;
+  }
+  .nk-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    border-radius:999px;border:1px solid transparent;
+    padding:9px 18px;font-size:14px;font-weight:700;
+    transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;
+  }
+  .nk-btn:hover{transform:translateY(-1px)}
+  .nk-btn-primary{background:var(--nk-neon);color:#07211a;box-shadow:0 10px 24px rgba(0,229,160,.24)}
+  .nk-btn-ghost{background:transparent;border-color:var(--nk-line);color:var(--nk-text)}
+  .nk-btn-ghost:hover{border-color:var(--nk-neon);color:var(--nk-neon)}
+  .nk-btn-violet{background:linear-gradient(120deg,var(--nk-violet),#4b8bff);color:#fff}
+  .nk-nav-toggle{
+    display:none;border:1px solid var(--nk-line);background:var(--nk-panel);
+    border-radius:10px;padding:8px 11px;font-size:18px;line-height:1;
+  }
+
+  /* ============ 首屏（左文右侧大图 + 数据条） ============ */
+  .nk-hero{padding:52px 0 40px}
+  .nk-hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:44px;align-items:center;
+  }
+  .nk-hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:5px 13px;border-radius:999px;
+    background:var(--nk-neon-soft);border:1px solid rgba(0,229,160,.35);
+    color:var(--nk-neon);font-size:12.5px;font-weight:700;letter-spacing:.4px;
+  }
+  .nk-hero-tag i{width:7px;height:7px;border-radius:50%;background:var(--nk-neon);box-shadow:0 0 0 4px rgba(0,229,160,.18)}
+  .nk-hero h1{
+    font-size:clamp(31px,4.6vw,54px);
+    margin:18px 0 14px;
+    letter-spacing:-.5px;
+    background:linear-gradient(100deg,#ffffff 20%,#b9f7e4 55%,#9d8cff 92%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .nk-hero-lead{color:var(--nk-muted);font-size:16px;max-width:56ch}
+  .nk-hero-lead b{color:var(--nk-text);font-weight:700}
+  .nk-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+  .nk-hero-stats{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;margin-top:30px;
+    border-top:1px solid var(--nk-line);padding-top:22px;
+  }
+  .nk-hero-stat strong{
+    display:block;font-size:clamp(20px,2.4vw,27px);
+    color:var(--nk-neon);font-variant-numeric:tabular-nums;letter-spacing:-.5px;
+  }
+  .nk-hero-stat span{font-size:12.5px;color:var(--nk-muted)}
+
+  .nk-hero-visual{position:relative}
+  .nk-hero-shot{
+    border-radius:22px;overflow:hidden;
+    border:1px solid var(--nk-line);
+    box-shadow:0 30px 70px rgba(0,0,0,.5);
+    position:relative;background:var(--nk-panel);
+  }
+  .nk-hero-shot img{width:100%;aspect-ratio:16/11;object-fit:cover}
+  .nk-hero-live{
+    position:absolute;top:14px;left:14px;
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(10,14,24,.78);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,80,110,.55);
+    color:#ff7290;font-size:12px;font-weight:800;letter-spacing:.6px;
+    padding:5px 11px;border-radius:999px;
+  }
+  .nk-hero-live i{width:7px;height:7px;border-radius:50%;background:#ff4d6d;animation:nk-pulse 1.4s infinite}
+  .nk-hero-shot-meta{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:13px 16px;background:var(--nk-panel);
+    border-top:1px solid var(--nk-line);font-size:13px;color:var(--nk-muted);
+  }
+  .nk-hero-shot-meta strong{color:var(--nk-text);font-size:13.5px}
+  .nk-hero-float{
+    margin-top:16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  }
+  .nk-mini-card{
+    background:var(--nk-panel);border:1px solid var(--nk-line);border-radius:14px;
+    padding:12px 14px;display:flex;gap:10px;align-items:center;
+    transition:border-color .2s,transform .2s;
+  }
+  .nk-mini-card:hover{border-color:rgba(0,229,160,.5);transform:translateY(-2px)}
+  .nk-mini-card em{
+    font-style:normal;font-size:11px;font-weight:800;letter-spacing:.5px;
+    color:#08201a;background:var(--nk-neon);border-radius:7px;padding:2px 7px;
+  }
+  .nk-mini-card em.v{background:var(--nk-violet);color:#fff}
+  .nk-mini-card span{font-size:12.5px;color:var(--nk-muted);line-height:1.4}
+
+  @keyframes nk-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+
+  /* ============ 通用 section 基础 ============ */
+  .nk-section{padding:56px 0;border-top:1px solid rgba(44,49,73,.65)}
+  .nk-section:first-of-type{border-top:0}
+  .nk-sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:22px;
+    margin-bottom:26px;flex-wrap:wrap;
+  }
+  .nk-sec-kicker{
+    font-size:11.5px;letter-spacing:3px;font-weight:800;color:var(--nk-neon);
+    text-transform:uppercase;margin-bottom:8px;
+  }
+  .nk-sec-head h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.4px}
+  .nk-sec-head p{color:var(--nk-muted);font-size:14px;max-width:60ch;margin-top:8px}
+  .nk-sec-more{
+    font-size:13px;color:var(--nk-neon);border:1px solid rgba(0,229,160,.4);
+    padding:7px 15px;border-radius:999px;background:var(--nk-neon-soft);
+    white-space:nowrap;
+  }
+
+  /* ============ 视频区：一幅重点大图与文字列表 ============ */
+  .nk-feature-grid{
+    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;align-items:start;
+  }
+  .nk-feature-main{
+    background:var(--nk-panel);border:1px solid var(--nk-line);
+    border-radius:var(--nk-radius);overflow:hidden;
+  }
+  .nk-feature-main .nk-shot{position:relative}
+  .nk-feature-main img{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .nk-play{
+    position:absolute;inset:0;display:grid;place-items:center;
+    background:linear-gradient(180deg,rgba(6,10,20,0) 45%,rgba(6,10,20,.55));
+  }
+  .nk-play span{
+    width:60px;height:60px;border-radius:50%;
+    background:rgba(255,255,255,.92);display:grid;place-items:center;
+    box-shadow:0 12px 34px rgba(0,229,160,.35);transition:transform .2s;
+  }
+  .nk-play span::after{
+    content:"";display:block;margin-left:4px;
+    border-left:16px solid #0cd08f;
+    border-top:10px solid transparent;border-bottom:10px solid transparent;
+  }
+  .nk-feature-main:hover .nk-play span{transform:scale(1.08)}
+  .nk-feature-body{padding:18px 20px 20px}
+  .nk-feature-body h3{font-size:20px;letter-spacing:-.2px}
+  .nk-feature-body p{color:var(--nk-muted);font-size:14px;margin-top:9px}
+  .nk-meta-row{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    margin-top:14px;font-size:12.5px;color:var(--nk-muted);
+  }
+  .nk-tag{
+    display:inline-block;padding:2px 9px;border-radius:999px;
+    background:var(--nk-panel-2);border:1px solid var(--nk-line);
+    font-size:11.5px;color:#b7c0d8;
+  }
+  .nk-tag.hot{color:#ffce7a;border-color:rgba(255,181,71,.45);background:rgba(255,181,71,.1)}
+
+  .nk-video-list{display:flex;flex-direction:column;gap:12px}
+  .nk-video-item{
+    display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+    gap:14px;align-items:start;
+    padding:15px 16px;border-radius:13px;
+    background:var(--nk-panel);border:1px solid var(--nk-line);
+    transition:border-color .2s,background .2s,transform .2s;
+  }
+  .nk-video-item:hover{border-color:rgba(0,229,160,.45);background:var(--nk-panel-2);transform:translateX(2px)}
+  .nk-video-item .nk-vidx{
+    width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:var(--nk-panel-2);border:1px solid var(--nk-line);
+    font-size:13px;font-weight:800;color:var(--nk-neon);font-variant-numeric:tabular-nums;
+  }
+  .nk-video-item h4{font-size:15px;font-weight:700}
+  .nk-video-item p{font-size:12.5px;color:var(--nk-muted);margin-top:4px}
+  .nk-video-item .nk-vmeta{font-size:11.5px;color:#7f89a6;margin-top:7px;display:flex;gap:10px;flex-wrap:wrap}
+  .nk-icon-btns{display:flex;gap:6px}
+  .nk-icon-btn{
+    width:34px;height:34px;border-radius:9px;border:1px solid var(--nk-line);
+    background:var(--nk-panel-2);display:grid;place-items:center;
+    font-size:13px;transition:border-color .2s,color .2s;
+  }
+  .nk-icon-btn:hover{border-color:var(--nk-neon);color:var(--nk-neon)}
+  .nk-icon-btn.is-liked{color:var(--nk-neon);border-color:rgba(0,229,160,.6);background:var(--nk-neon-soft)}
+  .nk-icon-btn.is-saved{color:#ff8fb3;border-color:rgba(255,143,179,.55);background:rgba(255,143,179,.1)}
+
+  /* ============ 深度解析（关键词解析，≥800字） ============ */
+  .nk-deep-grid{
+    display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+    gap:34px;align-items:start;
+  }
+  .nk-deep-aside{
+    position:relative;background:var(--nk-panel);border:1px solid var(--nk-line);
+    border-radius:var(--nk-radius);padding:22px;overflow:hidden;
+  }
+  .nk-deep-aside::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--nk-neon),var(--nk-violet));
+  }
+  .nk-deep-aside h3{font-size:17px;margin-bottom:12px}
+  .nk-deep-aside ul{display:grid;gap:10px}
+  .nk-deep-aside li{
+    font-size:13.5px;color:var(--nk-muted);
+    padding-left:18px;position:relative;
+  }
+  .nk-deep-aside li::before{
+    content:"";position:absolute;left:0;top:9px;width:7px;height:7px;
+    border-radius:2px;background:var(--nk-neon);
+  }
+  .nk-deep-aside img{margin-top:18px;border-radius:12px;aspect-ratio:4/3;object-fit:cover;width:100%}
+  .nk-prose h2{margin-bottom:14px}
+  .nk-prose h3{font-size:18px;margin:26px 0 10px;color:#fff;padding-left:12px;border-left:3px solid var(--nk-neon)}
+  .nk-prose h3:first-of-type{margin-top:0}
+  .nk-prose p{color:#c2c9dd;font-size:14.5px;margin-bottom:10px}
+  .nk-prose p b{color:#fff}
+
+  /* ============ 专题企划 ============ */
+  .nk-topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .nk-topic-card{
+    background:linear-gradient(170deg,var(--nk-panel-2),var(--nk-panel));
+    border:1px solid var(--nk-line);border-radius:var(--nk-radius);
+    padding:20px;display:flex;flex-direction:column;gap:12px;
+    transition:transform .2s,border-color .2s;
+  }
+  .nk-topic-card:hover{transform:translateY(-3px);border-color:rgba(123,92,255,.55)}
+  .nk-topic-status{
+    align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.4px;
+    padding:3px 10px;border-radius:999px;background:rgba(123,92,255,.16);
+    color:#b3a5ff;border:1px solid rgba(123,92,255,.4);
+  }
+  .nk-topic-status.done{background:rgba(0,229,160,.12);color:var(--nk-neon);border-color:rgba(0,229,160,.4)}
+  .nk-topic-card h3{font-size:16.5px}
+  .nk-topic-card>p{font-size:13px;color:var(--nk-muted)}
+  .nk-topic-items{border-top:1px dashed var(--nk-line);padding-top:10px;display:grid;gap:7px}
+  .nk-topic-items li{font-size:12.5px;color:#a8b1c9;display:flex;gap:8px}
+  .nk-topic-items li::before{content:"▸";color:var(--nk-violet)}
+
+  /* ============ 创作者矩阵：双列简介 ============ */
+  .nk-author-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .nk-author-card{
+    display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;
+    background:var(--nk-panel);border:1px solid var(--nk-line);
+    border-radius:var(--nk-radius);padding:18px;
+    transition:border-color .2s,transform .2s;
+  }
+  .nk-author-card:hover{border-color:rgba(0,229,160,.45);transform:translateY(-2px)}
+  .nk-avatar{
+    width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
+    font-weight:900;font-size:20px;color:#08131c;flex:0 0 auto;
+  }
+  .nk-avatar.a1{background:linear-gradient(140deg,#00e5a0,#0aa9ff)}
+  .nk-avatar.a2{background:linear-gradient(140deg,#ffb547,#ff7a59)}
+  .nk-avatar.a3{background:linear-gradient(140deg,#7b5cff,#c26bff)}
+  .nk-avatar.a4{background:linear-gradient(140deg,#54d1ff,#5b8cff)}
+  .nk-avatar.a5{background:linear-gradient(140deg,#ff8fb3,#ff5d7a)}
+  .nk-author-nick{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .nk-author-nick strong{font-size:15.5px}
+  .nk-author-nick small{font-size:11px;color:var(--nk-amber);border:1px solid rgba(255,181,71,.4);border-radius:999px;padding:1px 7px}
+  .nk-author-field{font-size:12.5px;color:var(--nk-neon);margin-top:3px}
+  .nk-author-nums{display:flex;gap:14px;font-size:12px;color:var(--nk-muted);margin-top:8px;flex-wrap:wrap}
+  .nk-author-nums b{color:var(--nk-text);font-variant-numeric:tabular-nums}
+  .nk-author-bio{font-size:12.8px;color:#a8b1c9;margin-top:9px}
+  .nk-author-more{
+    margin-top:11px;font-size:12px;color:var(--nk-neon);
+    background:transparent;border:0;padding:0;
+  }
+
+  /* ============ 榜单 + 评价 ============ */
+  .nk-rank-eval{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:26px;align-items:start}
+  .nk-rank{background:var(--nk-panel);border:1px solid var(--nk-line);border-radius:var(--nk-radius);padding:20px}
+  .nk-rank-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+  .nk-rank-tab{
+    border:1px solid var(--nk-line);background:var(--nk-panel-2);
+    border-radius:999px;padding:5px 13px;font-size:12.5px;color:var(--nk-muted);
+  }
+  .nk-rank-tab.is-active{background:var(--nk-neon);color:#07211a;border-color:var(--nk-neon);font-weight:800}
+  .nk-rank-row{
+    display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;
+    padding:11px 0;border-bottom:1px dashed rgba(44,49,73,.9);font-size:13.5px;
+  }
+  .nk-rank-row:last-child{border-bottom:0}
+  .nk-rank-no{font-weight:900;color:var(--nk-muted);font-variant-numeric:tabular-nums}
+  .nk-rank-row:nth-child(2) .nk-rank-no{color:var(--nk-amber)}
+  .nk-rank-row:nth-child(3) .nk-rank-no{color:#c9d2e6}
+  .nk-rank-row:nth-child(4) .nk-rank-no{color:#e2a17a}
+  .nk-rank-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .nk-rank-heat{font-size:12px;color:var(--nk-neon);font-variant-numeric:tabular-nums}
+
+  .nk-eval-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  .nk-eval-card{
+    background:var(--nk-panel-2);border:1px solid var(--nk-line);
+    border-radius:13px;padding:15px;font-size:13px;color:#c2c9dd;
+  }
+  .nk-eval-card:nth-child(3n+1){background:linear-gradient(160deg,rgba(0,229,160,.08),var(--nk-panel-2))}
+  .nk-eval-card:nth-child(3n+2){background:linear-gradient(160deg,rgba(123,92,255,.10),var(--nk-panel-2))}
+  .nk-eval-who{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+  .nk-eval-who span{
+    width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+    font-size:12px;font-weight:800;background:rgba(0,229,160,.16);color:var(--nk-neon);
+  }
+  .nk-eval-who strong{font-size:12.5px}
+  .nk-eval-who em{font-style:normal;font-size:11px;color:var(--nk-amber);margin-left:auto}
+
+  /* ============ 企业动态 / 合作 / FAQ ============ */
+  .nk-support-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start}
+  .nk-news-list{display:grid;gap:11px}
+  .nk-news-item{
+    display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;
+    padding:13px 15px;background:var(--nk-panel);border:1px solid var(--nk-line);border-radius:12px;
+  }
+  .nk-news-date{
+    font-size:11.5px;color:var(--nk-neon);font-variant-numeric:tabular-nums;
+    border:1px solid rgba(0,229,160,.35);border-radius:8px;padding:3px 8px;height:fit-content;white-space:nowrap;
+  }
+  .nk-news-item h4{font-size:14px}
+  .nk-news-item p{font-size:12.5px;color:var(--nk-muted);margin-top:3px}
+
+  .nk-partner-wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:4px}
+  .nk-partner{
+    border:1px solid var(--nk-line);border-radius:11px;background:var(--nk-panel);
+    padding:12px;font-size:13px;color:#b7c0d8;display:flex;align-items:center;gap:9px;
+  }
+  .nk-partner b{
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    background:rgba(123,92,255,.18);color:#b3a5ff;font-size:12px;font-weight:900;
+  }
+
+  .nk-faq{display:grid;gap:9px}
+  .nk-faq details{
+    background:var(--nk-panel);border:1px solid var(--nk-line);border-radius:11px;
+    padding:13px 16px;transition:border-color .2s;
+  }
+  .nk-faq details[open]{border-color:rgba(0,229,160,.45)}
+  .nk-faq summary{
+    cursor:pointer;font-size:14px;font-weight:700;list-style:none;
+    display:flex;justify-content:space-between;gap:12px;
+  }
+  .nk-faq summary::-webkit-details-marker{display:none}
+  .nk-faq summary::after{content:"+";color:var(--nk-neon);font-weight:900}
+  .nk-faq details[open] summary::after{content:"–"}
+  .nk-faq p{font-size:13px;color:var(--nk-muted);margin-top:9px}
+
+  /* ============ 投稿 CTA ============ */
+  .nk-cta{
+    margin:56px 0;border-radius:22px;padding:34px;
+    background:
+      radial-gradient(600px 240px at 90% 0%, rgba(123,92,255,.35), transparent 65%),
+      radial-gradient(500px 240px at 5% 100%, rgba(0,229,160,.22), transparent 60%),
+      var(--nk-panel);
+    border:1px solid var(--nk-line);
+    display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:24px;align-items:center;
+  }
+  .nk-cta h2{font-size:clamp(21px,2.6vw,28px)}
+  .nk-cta p{color:var(--nk-muted);font-size:14px;margin-top:9px;max-width:62ch}
+  .nk-cta-actions{display:flex;gap:11px;flex-wrap:wrap}
+
+  /* ============ 页脚 ============ */
+  .nk-footer{border-top:1px solid var(--nk-line);padding:44px 0 26px;background:rgba(15,17,26,.6)}
+  .nk-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:26px}
+  .nk-footer h4{font-size:13.5px;margin-bottom:12px;letter-spacing:.4px}
+  .nk-footer p,.nk-footer li{font-size:12.8px;color:var(--nk-muted)}
+  .nk-footer ul{display:grid;gap:8px}
+  .nk-footer a:hover{color:var(--nk-neon)}
+  .nk-footer-brand p{margin-top:12px;max-width:40ch}
+  .nk-footer-bottom{
+    margin-top:30px;padding-top:18px;border-top:1px solid rgba(44,49,73,.8);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:12px;color:#7f89a6;
+  }
+
+  /* ============ 浮层组件：Toast / 弹窗 / 回顶 ============ */
+  .nk-toast{
+    position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+    background:#0d1a20;color:var(--nk-neon);border:1px solid rgba(0,229,160,.5);
+    padding:11px 20px;border-radius:999px;font-size:13px;font-weight:700;
+    opacity:0;pointer-events:none;transition:opacity .28s,transform .28s;z-index:200;
+    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  }
+  .nk-toast.is-show{opacity:1;transform:translate(-50%,0)}
+
+  .nk-modal{
+    position:fixed;inset:0;z-index:190;display:none;
+    align-items:center;justify-content:center;padding:20px;
+    background:rgba(6,9,16,.74);backdrop-filter:blur(4px);
+  }
+  .nk-modal.is-open{display:flex}
+  .nk-modal-box{
+    width:min(560px,100%);max-height:86vh;overflow:auto;
+    background:var(--nk-panel);border:1px solid var(--nk-line);
+    border-radius:18px;padding:24px;position:relative;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+  }
+  .nk-modal-box h3{font-size:19px;margin-bottom:6px}
+  .nk-modal-box>p{font-size:13px;color:var(--nk-muted);margin-bottom:16px}
+  .nk-modal-close{
+    position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:9px;
+    border:1px solid var(--nk-line);background:var(--nk-panel-2);font-size:15px;
+  }
+  .nk-field{display:grid;gap:6px;margin-bottom:13px}
+  .nk-field label{font-size:12.5px;color:var(--nk-muted)}
+  .nk-field input,.nk-field textarea,.nk-field select{
+    width:100%;background:var(--nk-panel-2);border:1px solid var(--nk-line);
+    border-radius:10px;padding:10px 12px;color:var(--nk-text);font:inherit;font-size:13.5px;outline:none;
+  }
+  .nk-field input:focus,.nk-field textarea:focus,.nk-field select:focus{border-color:var(--nk-neon)}
+  .nk-field textarea{min-height:88px;resize:vertical}
+  .nk-share-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:6px 0 4px}
+  .nk-share-row button{
+    border:1px solid var(--nk-line);background:var(--nk-panel-2);border-radius:11px;
+    padding:12px 8px;font-size:13px;font-weight:700;
+  }
+  .nk-share-row button:hover{border-color:var(--nk-neon);color:var(--nk-neon)}
+
+  .nk-top{
+    position:fixed;right:22px;bottom:24px;z-index:120;
+    width:44px;height:44px;border-radius:13px;
+    border:1px solid rgba(0,229,160,.5);background:rgba(13,26,32,.92);
+    color:var(--nk-neon);font-size:17px;font-weight:900;
+    display:none;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.45);
+  }
+  .nk-top.is-show{display:grid}
+
+  .nk-empty{
+    padding:14px 16px;border:1px dashed var(--nk-line);border-radius:12px;
+    font-size:13px;color:var(--nk-muted);margin-top:10px;
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width:1024px){
+    :root{--nk-head-h:150px}
+    .nk-hero-grid,.nk-feature-grid,.nk-deep-grid,.nk-rank-eval,.nk-support-grid{grid-template-columns:minmax(0,1fr)}
+    .nk-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .nk-author-grid{grid-template-columns:minmax(0,1fr)}
+    .nk-footer-grid{grid-template-columns:1fr 1fr}
+    .nk-cta{grid-template-columns:minmax(0,1fr)}
+    .nk-search input{width:110px}
+  }
+  @media (max-width:820px){
+    :root{--nk-head-h:112px}
+    .nk-nav{
+      display:none;position:absolute;left:0;right:0;top:100%;
+      background:rgba(15,17,26,.98);border-bottom:1px solid var(--nk-line);
+      padding:10px 20px 16px;
+    }
+    .nk-nav.is-open{display:block}
+    .nk-nav ul{flex-direction:column;gap:2px}
+    .nk-nav a{display:block;padding:10px 12px}
+    .nk-header-inner{position:relative;flex-wrap:wrap;gap:12px}
+    .nk-nav-toggle{display:inline-flex;order:3}
+    .nk-head-tools{order:4;margin-left:auto}
+    .nk-search{padding-left:10px}
+    .nk-search input{width:96px}
+    .nk-hero-stats{grid-template-columns:1fr;gap:14px}
+    .nk-hero-stats{border-top:1px solid var(--nk-line)}
+    .nk-hero-stat{display:flex;align-items:baseline;gap:10px}
+    .nk-eval-grid,.nk-partner-wall{grid-template-columns:minmax(0,1fr)}
+    .nk-video-item{grid-template-columns:auto minmax(0,1fr);}
+    .nk-video-item .nk-icon-btns{grid-column:2}
+  }
+  @media (max-width:560px){
+    .nk-wrap{width:min(1200px,100% - 28px)}
+    .nk-topic-grid{grid-template-columns:minmax(0,1fr)}
+    .nk-footer-grid{grid-template-columns:minmax(0,1fr)}
+    .nk-hero-float{grid-template-columns:minmax(0,1fr)}
+    .nk-cta{padding:24px}
+    .nk-ticker{font-size:12px}
+    .nk-logo-text span{display:none}
+    .nk-search input{width:78px}
+    .nk-btn{padding:8px 14px;font-size:13px}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ===== S1 公告条 + 页头 ===== -->
+<div class="nk-sticky-shell">
+  <div class="nk-ticker">
+    <div class="nk-wrap" style="display:flex;align-items:center;gap:14px;width:min(1200px,100% - 40px)">
+      <span class="nk-ticker-badge">官方发布</span>
+      <div class="nk-ticker-roll" id="nkTickerRoll">
+        <div class="nk-ticker-item is-on"><b>今日赛程已上线</b>：城市夜跑积分赛第三轮报名开启，名额 320 个</div>
+        <div class="nk-ticker-item"><b>新增比赛条目</b>：11月23日 城市三人篮球挑战赛 · 直播预约通道开放</div>
+        <div class="nk-ticker-item"><b>内容更新</b>：每日比赛精华集锦新增 12 条高清原创视频</div>
+        <div class="nk-ticker-item"><b>投票进行中</b>：本周最佳镜头评选，截止 11月24日 22:00</div>
+        <div class="nk-ticker-item"><b>创作者招募</b>：赛事影像创作者认证计划第四期开放上传</div>
+      </div>
+      <span class="nk-ticker-time" id="nkTickerClock">--:--</span>
+    </div>
+  </div>
+
+  <div class="nk-wrap">
+    <div class="nk-header-inner">
+      <a class="nk-logo" href="#nkTop">
+        <span class="nk-logo-mark">NPX</span>
+        <span class="nk-logo-text">
+          <strong>npxvip</strong>
+          <span>DAILY MATCH</span>
+        </span>
+      </a>
+
+      <nav class="nk-nav" id="nkNav" aria-label="主导航">
+        <ul>
+          <li><a href="#nkMatches">每日比赛</a></li>
+          <li><a href="#nkInsight">赛事解析</a></li>
+          <li><a href="#nkTopics">专题企划</a></li>
+          <li><a href="#nkCreators">创作者</a></li>
+          <li><a href="#nkRanking">热度榜</a></li>
+          <li><a href="#nkNews">企业动态</a></li>
+          <li><a href="#nkFaq">帮助</a></li>
+        </ul>
+      </nav>
+
+      <div class="nk-head-tools">
+        <form class="nk-search" id="nkSearchForm" role="search" onsubmit="return false;">
+          <input id="nkSearchInput" type="search" placeholder="搜索比赛 / 选手 / 专题" aria-label="搜索比赛内容">
+          <button type="submit" id="nkSearchBtn">搜索</button>
+        </form>
+        <button class="nk-btn nk-btn-primary" data-nk-modal="submit" id="nkHeaderSubmit">投稿</button>
+        <button class="nk-nav-toggle" id="nkNavToggle" aria-expanded="false" aria-controls="nkNav" aria-label="展开导航">☰</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== S2 品牌首屏 ===== -->
+<header class="nk-hero" id="nkTop">
+  <div class="nk-wrap">
+    <div class="nk-hero-grid">
+      <div>
+        <span class="nk-hero-tag"><i></i>npxvip 官方网站 · 每日比赛影像平台</span>
+        <h1>npxvip最新每日比赛</h1>
+        <p class="nk-hero-lead">
+          作为深耕赛事影像领域的<b>垂直内容品牌</b>，npxvip 以「每日比赛」为核心产品线，
+          为运动爱好者、参赛选手与赛事组织方搭建高品质的<b>官方影像门户</b>。
+          我们坚持原创拍摄、正版授权与高清收录，让每一场普通比赛都拥有被认真记录的权利，
+          也让每一次刷新的成绩、每一滴汗水，都能在社区里被看见、被讨论、被陪伴。
+        </p>
+
+        <div class="nk-hero-actions">
+          <a class="nk-btn nk-btn-primary" href="#nkMatches">查看今日比赛 →</a>
+          <button class="nk-btn nk-btn-ghost" data-nk-modal="submit">我要投稿报名</button>
+        </div>
+
+        <div class="nk-hero-stats">
+          <div class="nk-hero-stat"><strong>1,286</strong><span>累计收录比赛场次</span></div>
+          <div class="nk-hero-stat"><strong>9,470+</strong><span>高清原创视频条目</span></div>
+          <div class="nk-hero-stat"><strong>68 万</strong><span>社区注册关注用户</span></div>
+        </div>
+      </div>
+
+      <div class="nk-hero-visual">
+        <div class="nk-hero-shot">
+          <span class="nk-hero-live"><i></i>LIVE</span>
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 550'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230d1b2a'/%3E%3Cstop offset='1' stop-color='%231a2b45'/%3E%3C/linearGradient%3E%3ClinearGradient id='g2' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%2300e5a0'/%3E%3Cstop offset='1' stop-color='%230aa9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='550' fill='url(%23g1)'/%3E%3Cellipse cx='560' cy='150' rx='300' ry='190' fill='%2300e5a0' opacity='.10'/%3E%3Cellipse cx='140' cy='470' rx='260' ry='170' fill='%237b5cff' opacity='.14'/%3E%3Cg stroke='%233a4c6b' stroke-width='2' opacity='.5'%3E%3Cpath d='M0 430h800'/%3E%3Cpath d='M0 470h800'/%3E%3Cpath d='M0 510h800'/%3E%3C/g%3E%3Cg fill='url(%23g2)'%3E%3Ccircle cx='270' cy='262' r='34'/%3E%3Crect x='240' y='300' width='60' height='120' rx='26'/%3E%3Crect x='196' y='318' width='52' height='16' rx='8' transform='rotate(22 196 318)'/%3E%3Crect x='300' y='330' width='58' height='16' rx='8' transform='rotate(-30 300 330)'/%3E%3Crect x='232' y='412' width='20' height='92' rx='10'/%3E%3Crect x='286' y='408' width='20' height='96' rx='10' transform='rotate(-9 286 408)'/%3E%3C/g%3E%3Cg fill='%23ffb547'%3E%3Ccircle cx='432' cy='238' r='26'/%3E%3Crect x='408' y='268' width='48' height='104' rx='22'/%3E%3Crect x='372' y='290' width='42' height='14' rx='7' transform='rotate(18 372 290)'/%3E%3Crect x='452' y='296' width='44' height='14' rx='7' transform='rotate(-24 452 296)'/%3E%3Crect x='404' y='364' width='17' height='82' rx='8' transform='rotate(7 404 364)'/%3E%3Crect x='446' y='360' width='17' height='86' rx='8' transform='rotate(-11 446 360)'/%3E%3C/g%3E%3Cg fill='%23ffffff' opacity='.9'%3E%3Ccircle cx='622' cy='300' r='14'/%3E%3C/g%3E%3Ccircle cx='470' cy='228' r='12' fill='%23e8ecf7'/%3E%3Cpath d='M462 228l6-10 6 10z' fill='%23e8ecf7'/%3E%3Cg stroke='%2300e5a0' stroke-width='3' fill='none' opacity='.7'%3E%3Ccircle cx='470' cy='228' r='46'/%3E%3Ccircle cx='470' cy='228' r='62' stroke-dasharray='6 10'/%3E%3C/g%3E%3Crect x='40' y='42' width='210' height='40' rx='20' fill='%230e2230' opacity='.8'/%3E%3Ctext x='62' y='68' font-family='sans-serif' font-size='18' fill='%2300e5a0'%3EDAY 11 · 决赛%3C/text%3E%3C/svg%3E" alt="npxvip 每日比赛决赛现场主视觉，两名选手在赛道终点冲刺">
+          <div class="nk-play"><span></span></div>
+        </div>
+        <div class="nk-hero-shot-meta">
+          <strong>今日焦点 · 城市夜跑积分赛第三轮</strong>
+          <span>4.2 万播放</span>
+        </div>
+        <div class="nk-hero-float">
+          <div class="nk-mini-card"><em>NEW</em><span>11月23日 三人篮球挑战赛已开票</span></div>
+          <div class="nk-mini-card"><em class="v">企划</em><span>「每日比赛」24 小时纪录栏目更新</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== S3 主内容入口：每日比赛 ===== -->
+<section class="nk-section" id="nkMatches">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Daily Matches</div>
+        <h2>npxvip 最新每日比赛精选</h2>
+        <p>聚焦当日赛程与赛后回放，npxvip 每日比赛栏目以一条重点长片与多条速览条目组合呈现，方便你在通勤、午休与睡前快速跟进全城赛事动态。</p>
+      </div>
+      <a class="nk-sec-more" href="#nkRanking">查看完整榜单 →</a>
+    </div>
+
+    <div class="nk-feature-grid">
+      <!-- 重点大图 + 文字列表 -->
+      <article class="nk-feature-main">
+        <div class="nk-shot">
+          <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 506'%3E%3Cdefs%3E%3ClinearGradient id='t1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231b2338'/%3E%3Cstop offset='1' stop-color='%230d3a34'/%3E%3C/linearGradient%3E%3ClinearGradient id='t2' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23ffb547'/%3E%3Cstop offset='1' stop-color='%23ff7a59'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='506' fill='url(%23t1)'/%3E%3Cg opacity='.35' stroke='%2300e5a0' stroke-width='1.5' fill='none'%3E%3Ccircle cx='450' cy='253' r='150'/%3E%3Ccircle cx='450' cy='253' r='210' stroke-dasharray='8 14'/%3E%3Cpath d='M450 40v426M110 253h680'/%3E%3C/g%3E%3Cg fill='url(%23t2)'%3E%3Ccircle cx='470' cy='186' r='30'/%3E%3Crect x='440' y='222' width='60' height='112' rx='26'/%3E%3Crect x='392' y='242' width='52' height='16' rx='8' transform='rotate(26 392 242)'/%3E%3Crect x='508' y='252' width='56' height='16' rx='8' transform='rotate(-32 508 252)'/%3E%3Crect x='432' y='326' width='19' height='96' rx='9' transform='rotate(9 432 326)'/%3E%3Crect x='488' y='320' width='19' height='102' rx='9' transform='rotate(-12 488 320)'/%3E%3C/g%3E%3Cg fill='%2300e5a0' opacity='.85'%3E%3Crect x='626' y='356' width='96' height='60' rx='8'/%3E%3Crect x='742' y='340' width='96' height='76' rx='8'/%3E%3C/g%3E%3Cg fill='%230e1a28' opacity='.8'%3E%3Crect x='40' y='40' width='150' height='34' rx='17'/%3E%3Crect x='40' y='88' width='110' height='34' rx='17'/%3E%3C/g%3E%3Ctext x='62' y='63' font-family='sans-serif' font-size='16' fill='%2300e5a0'%3EROUND 03%3C/text%3E%3Ctext x='62' y='111' font-family='sans-serif' font-size='16' fill='%23ffb547'%3E24H 纪录%3C/text%3E%3C/svg%3E" alt="城市夜跑积分赛第三轮重点回放，选手冲线瞬间的画面构图">
+          <div class="nk-play"><span></span></div>
+        </div>
+        <div class="nk-feature-body">
+          <h3>城市夜跑积分赛第三轮：最后一公里如何翻盘</h3>
+          <p>本场重点长片完整记录了第三轮夜跑积分赛的前中后三段节奏。前半程领跑集团保持在 4 分 12 秒配速，进入补给点后局面被彻底打乱。片子以三机位跟拍加赛后采访构成，包含队医视角、志愿者视角与观众视角，适合想系统学习比赛节奏管理的跑者反复观看。</p>
+          <div class="nk-meta-row">
+            <span class="nk-tag hot">今日焦点</span>
+            <span class="nk-tag">赛道纪实</span>
+            <span class="nk-tag">经验分享</span>
+            <span>作者：夜行记录者</span>
+            <span>播放 42,180 · 点赞 6,204</span>
+          </div>
+          <div class="nk-meta-row" style="gap:9px">
+            <button class="nk-icon-btn" data-nk-like aria-pressed="false" aria-label="点赞本视频">👍 <span data-nk-like-count>6204</span></button>
+            <button class="nk-icon-btn" data-nk-save aria-pressed="false" aria-label="收藏本视频">♡</button>
+            <button class="nk-icon-btn" data-nk-share aria-label="分享本视频">⤴</button>
+            <button class="nk-icon-btn" data-nk-comment aria-label="展开评论">💬</button>
+          </div>
+        </div>
+      </article>
+
+      <div>
+        <div class="nk-video-list" id="nkVideos">
+          <article class="nk-video-item">
+            <span class="nk-vidx">01</span>
+            <div>
+              <h4>三人篮球挑战赛：加时赛 38 秒三次攻防全解析</h4>
+              <p>拆解最后 38 秒的三次攻防选择，从挡拆角度到换防时机逐帧说明。</p>
+              <div class="nk-vmeta"><span>战术解析</span><span>阿岩说球</span><span>播放 26,470 · 收藏 1,882</span></div>
+            </div>
+            <div class="nk-icon-btns">
+              <button class="nk-icon-btn" data-nk-like aria-label="点赞三人篮球解析" aria-pressed="false">👍</button>
+              <button class="nk-icon-btn" data-nk-save aria-label="收藏三人篮球解析" aria-pressed="false">♡</button>
+            </div>
+          </article>
+
+          <article class="nk-video-item">
+            <span class="nk-vidx">02</span>
+            <div>
+              <h4>新人挑战赛首秀：第一次上场比赛该准备什么装备</h4>
+              <p>从护具、鞋底到补水节奏，一份写给第一次报名参赛者的清单。</p>
+              <div class="nk-vmeta"><span>实用技巧</span><span>装备课代表</span><span>播放 19,306 · 收藏 2,410</span></div>
+            </div>
+            <div class="nk-icon-btns">
+              <button class="nk-icon-btn" data-nk-like aria-label="点赞新人挑战赛装备" aria-pressed="false">👍</button>
+              <button class="nk-icon-btn" data-nk-save aria-label="收藏新人挑战赛装备" aria-pressed="false">♡</button>
+            </div>
+          </article>
+
+          <article class="nk-video-item">
+            <span class="nk-vidx">03</span>
+            <div>
+              <h4>羽毛球双打联赛第 7 场：网前封网的三条铁律</h4>
+              <p>结合四段实拍回合，讲清楚封网站位与搭档轮转的配合逻辑。</p>
+              <div class="nk-vmeta"><span>教程干货</span><span>拍线笔记</span><span>播放 15,842 · 收藏 1,206</span></div>
+            </div>
+            <div class="nk-icon-btns">
+              <button class="nk-icon-btn" data-nk-like aria-label="点赞羽毛球封网" aria-pressed="false">👍</button>
+              <button class="nk-icon-btn" data-nk-save aria-label="收藏羽毛球封网" aria-pressed="false">♡</button>
+            </div>
+          </article>
+
+          <article class="nk-video-item">
+            <span class="nk-vidx">04</span>
+            <div>
+              <h4>社区乒乓球积分赛：业余选手的发球变化合集</h4>
+              <p>12 位参赛选手的发球慢放合集，附一份变化落点统计表。</p>
+              <div class="nk-vmeta"><span>赛事集锦</span><span>球台边的人</span><span>播放 13,309 · 收藏 986</span></div>
+            </div>
+            <div class="nk-icon-btns">
+              <button class="nk-icon-btn" data-nk-like aria-label="点赞乒乓发球合集" aria-pressed="false">👍</button>
+              <button class="nk-icon-btn" data-nk-save aria-label="收藏乒乓发球合集" aria-pressed="false">♡</button>
+            </div>
+          </article>
+
+          <article class="nk-video-item">
+            <span class="nk-vidx">05</span>
+            <div>
+              <h4>比赛幕后：一场 200 人赛事是怎么被 6 台机器拍完的</h4>
+              <p>从场地勘察、机位图到剪辑流水线，完整展示赛事影像的工业化流程。</p>
+              <div class="nk-vmeta"><span>创作幕后</span><span>影像工坊九号</span><span>播放 11,275 · 收藏 1,540</span></div>
+            </div>
+            <div class="nk-icon-btns">
+              <button class="nk-icon-btn" data-nk-like aria-label="点赞赛事幕后" aria-pressed="false">👍</button>
+              <button class="nk-icon-btn" data-nk-save aria-label="收藏赛事幕后" aria-pressed="false">♡</button>
+            </div>
+          </article>
+        </div>
+        <div class="nk-empty" id="nkSearchHint" hidden>没有匹配的每日比赛条目，试试「篮球」「夜跑」「幕后」等关键词。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 深度解析（关键词解析 800 字以上） ===== -->
+<section class="nk-section" id="nkInsight">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Brand Insight</div>
+        <h2>读懂 npxvip 每日比赛的内容生态</h2>
+        <p>npxvip 的赛事内容不是零散片段的堆叠，而是一套持续运营、可供检索复用的影像资产体系。以下从平台定位、内容生产与社区运营三方面展开解析，帮助你理解每日比赛栏目为什么值得长期关注。</p>
+      </div>
+    </div>
+
+    <div class="nk-deep-grid">
+      <aside class="nk-deep-aside">
+        <h3>栏目速览</h3>
+        <ul>
+          <li>每日比赛：当日赛程与赛后回放，24 小时内上线</li>
+          <li>赛事解析：战术与节奏的逐帧拆解，配合数据表</li>
+          <li>创作者矩阵：认证影像作者与赛事记录者的公开档案</li>
+          <li>社区互动：点赞、收藏、评论与每周最佳镜头投票</li>
+          <li>企业动态：官方发布、赛事合作与栏目更新日志</li>
+        </ul>
+        <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 450'%3E%3Cdefs%3E%3ClinearGradient id='d1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23212b45'/%3E%3Cstop offset='1' stop-color='%23122a2b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='600' height='450' fill='url(%23d1)'/%3E%3Cg fill='none' stroke='%2300e5a0' stroke-width='2' opacity='.6'%3E%3Crect x='58' y='270' width='54' height='120' rx='8'/%3E%3Crect x='132' y='218' width='54' height='172' rx='8'/%3E%3Crect x='206' y='168' width='54' height='222' rx='8'/%3E%3Crect x='280' y='244' width='54' height='146' rx='8'/%3E%3C/rect%3E%3C/g%3E%3Cg fill='%2300e5a0' opacity='.85'%3E%3Crect x='58' y='270' width='54' height='120' rx='8'/%3E%3Crect x='132' y='218' width='54' height='172' rx='8'/%3E%3Crect x='206' y='168' width='54' height='222' rx='8'/%3E%3C/g%3E%3Cg fill='%237b5cff' opacity='.85'%3E%3Crect x='280' y='244' width='54' height='146' rx='8'/%3E%3C/g%3E%3Cg fill='%23ffb547' opacity='.9'%3E%3Ccircle cx='430' cy='150' r='46'/%3E%3Crect x='404' y='200' width='52' height='118' rx='22'/%3E%3C/g%3E%3Cg stroke='%23e8ecf7' stroke-width='2' opacity='.35'%3E%3Cpath d='M40 410h520M40 60h520'/%3E%3C/g%3E%3Cg fill='%23e8ecf7' opacity='.55'%3E%3Ccircle cx='420' cy='360' r='7'/%3E%3Ccircle cx='470' cy='360' r='7'/%3E%3Ccircle cx='520' cy='360' r='7'/%3E%3C/g%3E%3C/svg%3E" alt="npxvip 每日比赛内容数据可视化示意图，柱状图形与人物剪影组合">
+      </aside>
+
+      <div class="nk-prose">
+        <h3>一、为什么「每日比赛」不是简单直播回放</h3>
+        <p>
+          很多赛事平台把比赛内容理解为直播结束后的录像归档，而 npxvip 从立项第一天起就把「每日比赛」定义为一档可持续运营的日更视频产品。每一场比赛在进入素材库之前，都会经过机位规划、收音方案、赛后采访、剪辑脚本与字幕校对五道流程；上线之后，还要经过一次数据复盘，判断哪些片段具备二次剪辑的价值。这意味着你在 npxvip 看到的每一段比赛视频，都不是随手拍下的毛片，而是经过完整工业化流程处理的精品内容。对于观众来说，这带来的是更高的信息密度：你可以在十分钟内看懂一场比赛的胜负手，也可以在三十秒的短片段里看懂一个业余选手的技术改进方向。
+        </p>
+        <p>
+          更重要的是，每日比赛栏目强调「当天发生、当天可看」。赛事结束后 24 小时内，精选片段、完整回放与战术解析三条内容线会同时上线，形成互相引用的内容网络。你从一条短视频进入，可以顺着标签找到完整长片，再顺着创作者主页看到同类比赛的历史记录。这种立体化的内容组织方式，是 npxvip 作为行业领先赛事影像品牌的核心差异点之一，也让「每日比赛」四个字真正具备了产品意义，而不只是一个栏目名称。
+        </p>
+
+        <h3>二、从一场比赛到一份可检索的影像资产</h3>
+        <p>
+          在 npxvip 的内容生态里，一场比赛会生成三层资产。第一层是<b>原始素材</b>：多机位视频、现场音频、计时数据与运动员基础信息，按统一命名规则归档，供后续调用。第二层是<b>成品内容</b>：包括当日速览、重点长片、战术解析与幕后花絮，每一条都独立成片并配有结构化标签。第三层是<b>社区衍生内容</b>：观众评论、创作者二创、每周最佳镜头投票结果，这些内容会被回收进下一轮选题会，决定下一周拍什么、怎么拍。
+        </p>
+        <p>
+          三层资产之间是闭环的。举例来说，一场社区三人篮球挑战赛结束后，导演组会把「加时赛最后 38 秒」标记为高价值片段，推送给擅长战术拆解的创作者；战术拆解视频上线后，又会反向吸引一批新观众回到完整回放。这样的循环让内容不是一次性消耗品，而是能被反复检索、反复观看的资产。对赛事组织方而言，这相当于拥有了一个有品质保障的官方影像档案；对普通观众而言，这意味着无论你是想学技术、看热闹，还是想看人物故事，都能在同一个平台找到入口。
+        </p>
+
+        <h3>三、社区运营与创作者成长机制</h3>
+        <p>
+          赛事影像最大的浪费，不是拍得不够好，而是拍完就沉底。npxvip 用一整套创作者机制来解决这个问题：认证创作者可以优先认领每日比赛的机位任务，获得官方提供的拍摄提纲与数据支持；新人创作者则可以通过投稿入口上传自己的作品，进入每周的编辑推荐池。为了鼓励持续创作，平台设置了阶梯式激励：作品被收藏达到一定数量后，可以解锁高清素材下载与官方剪辑模板；连续三个月稳定更新的作者，则有机会参与年度赛事影像共创计划。
+        </p>
+        <p>
+          社区互动不是装饰。点赞、收藏、评论与投票数据都会真实影响内容排序，使好内容获得更多曝光。与此同时，我们也保留了一批人工编辑推荐位，用于给新人作品与冷门项目留出空间。这种「算法保效率、编辑保品质」的双轨机制，让 npxvip 的每日比赛栏目既保持热度，也维护了内容的多元与包容。我们相信，一个真正值得信赖的赛事社区，应该让第一次参赛的新手和打了十年球的老将，都能找到属于自己的那条视频。
+        </p>
+
+        <h3>四、品牌理念：让每一次比赛被认真对待</h3>
+        <p>
+          从创立至今，npxvip 始终围绕一个朴素的判断做决策：比赛的价值不该只由名次决定。社区里的每一场业余联赛、企业友谊赛、青少年组比赛，都承载着具体的努力与情绪。我们把「真实、温暖、有力量」作为内容底线，不夸张剪辑、不制造对立、不虚构冲突，用专业与匠心对待每一段素材。也正因如此，越来越多的赛事组织方把 npxvip 作为官方影像合作平台，越来越多观众把它当作长期陪伴的赛事内容入口。这是品牌的成长路径，也是我们愿意持续投入的方向。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 专题企划 ===== -->
+<section class="nk-section" id="nkTopics">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Special Projects</div>
+        <h2>专题企划：把每日比赛连成长期叙事</h2>
+        <p>单个视频解答一个问题，专题则回答一类问题。npxvip 每季度策划 3 到 5 个赛事影像专题，围绕固定议题持续更新，形成可回溯的内容脉络，也为创作者提供更清晰的创作方向。</p>
+      </div>
+    </div>
+
+    <div class="nk-topic-grid">
+      <article class="nk-topic-card">
+        <span class="nk-topic-status">更新中 · 第 9 期</span>
+        <h3>每日比赛 24 小时</h3>
+        <p>一天之内，从清晨场地布置到深夜清场收工，完整跟拍一场业余赛事的全流程，观察那些镜头之外的人和事。</p>
+        <ul class="nk-topic-items">
+          <li>清晨五点：场地标线与围栏搭建</li>
+          <li>午后三点：替补席边的教练笔记</li>
+          <li>深夜十一点：设备清点与素材备份</li>
+        </ul>
+      </article>
+
+      <article class="nk-topic-card">
+        <span class="nk-topic-status done">已完结 · 共 12 期</span>
+        <h3>业余选手的第一次决赛</h3>
+        <p>记录四位不同项目的业余选手，第一次站上决赛场地前一个月的准备过程，包含训练、心态与装备调整。</p>
+        <ul class="nk-topic-items">
+          <li>羽毛球组：发球稳定性的三周改造</li>
+          <li>篮球组：从替补到首发的体能账本</li>
+          <li>跑步组：配速焦虑与自我和解</li>
+        </ul>
+      </article>
+
+      <article class="nk-topic-card">
+        <span class="nk-topic-status">更新中 · 第 4 期</span>
+        <h3>一场比赛的六种看法</h3>
+        <p>同一个赛点，用观众、选手、裁判、摄影师、志愿者与解说六种视角各拍一次，看看叙事如何被视角改变。</p>
+        <ul class="nk-topic-items">
+          <li>观众视角：看台上的呼吸声</li>
+          <li>裁判视角：一次判罚的判定过程</li>
+          <li>摄影师视角：为什么选这个机位</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 创作者矩阵 ===== -->
+<section class="nk-section" id="nkCreators">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Creators</div>
+        <h2>每日比赛背后的创作者</h2>
+        <p>他们是赛事影像的生产者，也是社区氛围的塑造者。以下创作者均在 npxvip 官方平台持续更新，擅长领域覆盖战术解析、装备测评、幕后纪录与人物访谈。</p>
+      </div>
+      <a class="nk-sec-more" href="#nkCta">申请成为创作者 →</a>
+    </div>
+
+    <div class="nk-author-grid">
+      <article class="nk-author-card">
+        <div class="nk-avatar a1">夜</div>
+        <div>
+          <div class="nk-author-nick"><strong>夜行记录者</strong><small>官方认证</small></div>
+          <div class="nk-author-field">赛道纪实 · 耐力项目</div>
+          <div class="nk-author-nums"><span>作品 <b>186</b></span><span>粉丝 <b>12.4万</b></span></div>
+          <p class="nk-author-bio">前业余马拉松选手，擅长在夜间与低光环境下完成赛事跟拍。习惯提前两天勘察赛道，把补给点、弯道和观众区标进机位图。作品以稳定的叙事节奏和克制的剪辑著称，代表栏目《最后一公里》。</p>
+          <button class="nk-author-more" data-nk-author="夜行记录者|赛道纪实 · 耐力项目|186|12.4万|擅长夜跑与耐力赛事的现场跟拍，主张用真实环境音保留比赛的情绪温度。">查看档案 →</button>
+        </div>
+      </article>
+
+      <article class="nk-author-card">
+        <div class="nk-avatar a2">岩</div>
+        <div>
+          <div class="nk-author-nick"><strong>阿岩说球</strong><small>战术专栏</small></div>
+          <div class="nk-author-field">战术解析 · 球类项目</div>
+          <div class="nk-author-nums"><span>作品 <b>241</b></span><span>粉丝 <b>18.7万</b></span></div>
+          <p class="nk-author-bio">大学篮球校队退役，现为赛事战术拆解作者。擅长用逐帧标记和简易战术板还原攻防选择，把复杂配合讲成观众听得懂的语言。每周固定更新两期《每日比赛战术复盘》，重视数据与画面互证。</p>
+          <button class="nk-author-more" data-nk-author="阿岩说球|战术解析 · 球类项目|241|18.7万|以逐帧讲解和战术板还原见长，坚持每个结论都要有画面依据，拒绝空泛点评。">查看档案 →</button>
+        </div>
+      </article>
+
+      <article class="nk-author-card">
+        <div class="nk-avatar a3">装</div>
+        <div>
+          <div class="nk-author-nick"><strong>装备课代表</strong><small>深度测评</small></div>
+          <div class="nk-author-field">装备测评 · 实用技巧</div>
+          <div class="nk-author-nums"><span>作品 <b>132</b></span><span>粉丝 <b>9.6万</b></span></div>
+          <p class="nk-author-bio">长期跟踪业余赛事装备使用情况，测过两百多双比赛用鞋与护具。内容强调可复现的测试条件，会公开测试场地、气温与使用时长。面向第一次参赛的新手，提供克制、不夸张的选购建议。</p>
+          <button class="nk-author-more" data-nk-author="装备课代表|装备测评 · 实用技巧|132|9.6万|测试流程公开透明，所有结论附使用场景说明，帮助新人少走弯路。">查看档案 →</button>
+        </div>
+      </article>
+
+      <article class="nk-author-card">
+        <div class="nk-avatar a4">影</div>
+        <div>
+          <div class="nk-author-nick"><strong>影像工坊九号</strong><small>幕后纪录</small></div>
+          <div class="nk-author-field">创作幕后 · 影像技术</div>
+          <div class="nk-author-nums"><span>作品 <b>97</b></span><span>粉丝 <b>7.2万</b></span></div>
+          <p class="nk-author-bio">由三位赛事摄影师组成的小团队，专注拍摄过程的公开化。常把机位图、收音方案与剪辑时间线直接展示给观众，让赛事影像的制作过程变成可学习的内容。也是平台官方剪辑模板的主要贡献者之一。</p>
+          <button class="nk-author-more" data-nk-author="影像工坊九号|创作幕后 · 影像技术|97|7.2万|把赛事拍摄的流程拆开讲清楚，输出可复用的机位与剪辑方案。">查看档案 →</button>
+        </div>
+      </article>
+
+      <article class="nk-author-card">
+        <div class="nk-avatar a5">台</div>
+        <div>
+          <div class="nk-author-nick"><strong>球台边的人</strong><small>社区记录</small></div>
+          <div class="nk-author-field">赛事集锦 · 人物访谈</div>
+          <div class="nk-author-nums"><span>作品 <b>158</b></span><span>粉丝 <b>6.8万</b></span></div>
+          <p class="nk-author-bio">活跃在社区球馆的常驻记录者，偏爱小球类项目的细节与人物。作品多为长镜头加同期声，少配乐、少字幕，用现场氛围本身讲故事。持续挖掘业余选手的日常训练与比赛故事。</p>
+          <button class="nk-author-more" data-nk-author="球台边的人|赛事集锦 · 人物访谈|158|6.8万|用长镜头与同期声记录球馆里的日常，关注被镜头忽略的普通参赛者。">查看档案 →</button>
+        </div>
+      </article>
+
+      <article class="nk-author-card">
+        <div class="nk-avatar a1">拍</div>
+        <div>
+          <div class="nk-author-nick"><strong>拍线笔记</strong><small>教程作者</small></div>
+          <div class="nk-author-field">教程干货 · 技术细节</div>
+          <div class="nk-author-nums"><span>作品 <b>204</b></span><span>粉丝 <b>11.1万</b></span></div>
+          <p class="nk-author-bio">从球拍穿线师转做技术教程作者，对器材参数与击球手感之间的关系尤其敏感。教程喜欢从慢动作回合讲起，落到可执行的训练动作。每月固定回答观众提问，形成《拍线答疑》系列。</p>
+          <button class="nk-author-more" data-nk-author="拍线笔记|教程干货 · 技术细节|204|11.1万|把器材参数翻译成可执行动作，教程以慢放回合与训练清单为主。">查看档案 →</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 榜单 + 评价 ===== -->
+<section class="nk-section" id="nkRanking">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Ranking & Voice</div>
+        <h2>每日比赛热度榜与社区口碑</h2>
+        <p>榜单依据播放、收藏、评论与投票综合计算，每天上午十点更新。社区口碑来自真实观众，覆盖不同观看目的与使用场景，帮助你判断内容是否适合自己。</p>
+      </div>
+    </div>
+
+    <div class="nk-rank-eval">
+      <div class="nk-rank">
+        <div class="nk-rank-tabs" role="tablist" aria-label="榜单切换">
+          <button class="nk-rank-tab is-active" data-nk-rank="hot" role="tab" aria-selected="true">热度榜</button>
+          <button class="nk-rank-tab" data-nk-rank="new" role="tab" aria-selected="false">新人榜</button>
+          <button class="nk-rank-tab" data-nk-rank="word" role="tab" aria-selected="false">口碑榜</button>
+        </div>
+        <div id="nkRankBody">
+          <div class="nk-rank-row"><span class="nk-rank-no">01</span><span class="nk-rank-name">城市夜跑积分赛第三轮 · 最后一公里如何翻盘</span><span class="nk-rank-heat">98.2</span></div>
+          <div class="nk-rank-row"><span class="nk-rank-no">02</span><span class="nk-rank-name">三人篮球挑战赛 · 加时赛 38 秒三次攻防全解析</span><span class="nk-rank-heat">94.7</span></div>
+          <div class="nk-rank-row"><span class="nk-rank-no">03</span><span class="nk-rank-name">比赛幕后 · 一场 200 人赛事是怎么被拍完的</span><span class="nk-rank-heat">91.5</span></div>
+          <div class="nk-rank-row"><span class="nk-rank-no">04</span><span class="nk-rank-name">新人挑战赛首秀 · 第一次上场比赛装备清单</span><span class="nk-rank-heat">88.9</span></div>
+          <div class="nk-rank-row"><span class="nk-rank-no">05</span><span class="nk-rank-name">羽毛球双打联赛第 7 场 · 网前封网三条铁律</span><span class="nk-rank-heat">86.4</span></div>
+          <div class="nk-rank-row"><span class="nk-rank-no">06</span><span class="nk-rank-name">社区乒乓球积分赛 · 业余选手发球变化合集</span><span class="nk-rank-heat">84.1</span></div>
+        </div>
+      </div>
+
+      <div class="nk-eval-grid">
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>林</span><strong>林间慢跑</strong><em>★★★★★</em></div>
+          看了第三轮夜跑回放，前半程配速讲解特别实用。我按视频里的补给节奏调整了周末训练，最后一公里居然没掉速。
+        </article>
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>陈</span><strong>陈教练</strong><em>★★★★☆</em></div>
+          作为带队教练，我最看重战术拆解的准确性。38 秒那期的画面标记很清楚，直接拿去给队员当训练素材了。
+        </article>
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>小</span><strong>小满不慢</strong><em>★★★★★</em></div>
+          第一次报名比赛，翻到新人装备清单这条，护具和鞋底建议写得比商城详情页还细，省了我不少试错成本。
+        </article>
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>阿</span><strong>阿布在场边</strong><em>★★★★☆</em></div>
+          幕后那期太好看了，原来一场比赛要六台机器分工。看完才知道以前自己拍的素材为什么剪不出来东西。
+        </article>
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>球</span><strong>球台边老周</strong><em>★★★★★</em></div>
+          乒乓发球合集适合反复看，慢放和落点统计都很扎实。唯一建议是希望加一点业余选手的自述，会更有代入感。
+        </article>
+        <article class="nk-eval-card">
+          <div class="nk-eval-who"><span>木</span><strong>木木拍线</strong><em>★★★★☆</em></div>
+          封网那期讲得明白，但双打轮转部分节奏略快。整体还是值得收藏，已经转给球友群了，讨论挺热烈。
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 企业动态 + 合作 + FAQ ===== -->
+<section class="nk-section" id="nkNews">
+  <div class="nk-wrap">
+    <div class="nk-sec-head">
+      <div>
+        <div class="nk-sec-kicker">Updates & Help</div>
+        <h2>企业动态、合作伙伴与常见问题</h2>
+        <p>npxvip 官方网站会持续发布栏目更新、赛事合作与功能调整信息；同时我们也把观众最常问的问题整理在这里，减少沟通成本。</p>
+      </div>
+    </div>
+
+    <div class="nk-support-grid">
+      <div>
+        <h3 style="font-size:17px;margin-bottom:14px">企业动态</h3>
+        <div class="nk-news-list">
+          <article class="nk-news-item">
+            <span class="nk-news-date">11 月 20 日</span>
+            <div><h4>「每日比赛」栏目升级为日更双档</h4><p>新增 22:00 档赛后速览，重点比赛当日完成剪辑与审核，次日凌晨前完成上线。</p></div>
+          </article>
+          <article class="nk-news-item">
+            <span class="nk-news-date">11 月 18 日</span>
+            <div><h4>与三城社区体育联盟达成影像合作</h4><p>双方将在业余联赛拍摄、赛事档案归档与创作者培养三方面展开年度合作。</p></div>
+          </article>
+          <article class="nk-news-item">
+            <span class="nk-news-date">11 月 15 日</span>
+            <div><h4>创作者认证计划第四期开放报名</h4><p>本期新增战术解析与幕后纪录两个方向，通过认证可获得官方拍摄提纲与素材授权。</p></div>
+          </article>
+          <article class="nk-news-item">
+            <span class="nk-news-date">11 月 12 日</span>
+            <div><h4>播放页新增收藏分组功能</h4><p>用户可将比赛视频按项目、作者或训练用途分组，收藏数据在账号内同步。</p></div>
+          </article>
+        </div>
+
+        <h3 style="font-size:17px;margin:26px 0 10px">合作品牌与伙伴</h3>
+        <div class="nk-partner-wall">
+          <div class="nk-partner"><b>城</b>城市社区体育联盟</div>
+          <div class="nk-partner"><b>线</b>拍线实验室</div>
+          <div class="nk-partner"><b>夜</b>夜跑者俱乐部</div>
+          <div class="nk-partner"><b>台</b>全民球台计划</div>
+        </div>
+      </div>
+
+      <div class="nk-faq" id="nkFaq">
+        <h3 style="font-size:17px;margin-bottom:14px">常见问题</h3>
+        <details open>
+          <summary>每日比赛多久更新一次？</summary>
+          <p>重点赛事每日更新，赛后速览通常在当地比赛结束后 4 小时内上线，完整回放与战术解析在 24 小时内补齐。专题类内容按周更新。</p>
+        </details>
+        <details>
+          <summary>我想投稿自己的比赛视频，需要什么条件？</summary>
+          <p>只要视频为本人原创或已获得授权，内容清晰、无侵权音乐，即可通过页面投稿入口提交。审核通常需要 1 至 3 个工作日，通过后会进入编辑推荐池。</p>
+        </details>
+        <details>
+          <summary>收藏的比赛视频会过期吗？</summary>
+          <p>不会。收藏内容保存在账号内长期有效，并支持按项目与作者分组。若内容因版权原因调整，我们会提前在账号消息中通知。</p>
+        </details>
+        <details>
+          <summary>如何申请成为官方认证创作者？</summary>
+          <p>在创作者页面提交申请，附上主页与三条代表作品。审核会综合画面质量、更新频率与内容真实度，通过后可参与每日比赛的机位认领。</p>
+        </details>
+        <details>
+          <summary>赛事组织方如何与平台合作？</summary>
+          <p>可通过企业合作入口留下赛事名称、规模与时间，我们会在两个工作日内联系，评估拍摄方案与影像归档需求。</p>
+        </details>
+        <details>
+          <summary>视频可以下载吗？</summary>
+          <p>认证创作者可在作品达到一定收藏量后解锁高清素材下载；普通观众可收藏与分享，暂不提供原片下载，以保护参赛者肖像与赛事权益。</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 投稿 CTA ===== -->
+<div class="nk-wrap">
+  <section class="nk-cta" id="nkCta">
+    <div>
+      <h2>让你的比赛，出现在 npxvip 每日比赛里</h2>
+      <p>无论是社区联赛、企业友谊赛还是个人挑战，只要值得记录，就值得被认真拍摄。投稿入口全年开放，上传你的素材或报名成为赛事创作者，与六十八万同好一起，把每日比赛变成共同成长的影像档案。</p>
+    </div>
+    <div class="nk-cta-actions">
+      <button class="nk-btn nk-btn-primary" data-nk-modal="submit">立即投稿 / 报名</button>
+      <button class="nk-btn nk-btn-violet" data-nk-share>分享本页</button>
+    </div>
+  </section>
+</div>
+
+<!-- ===== 页脚 ===== -->
+<footer class="nk-footer">
+  <div class="nk-wrap">
+    <div class="nk-footer-grid">
+      <div class="nk-footer-brand">
+        <div class="nk-logo" style="margin-bottom:4px">
+          <span class="nk-logo-mark">NPX</span>
+          <span class="nk-logo-text"><strong>npxvip</strong><span>DAILY MATCH</span></span>
+        </div>
+        <p>npxvip 官方网站，专注每日比赛影像的垂直内容品牌。坚持原创、正版与高清原则，为赛事组织方与观众提供值得信赖的影像档案与社区平台。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#nkMatches">每日比赛</a></li>
+          <li><a href="#nkInsight">赛事解析</a></li>
+          <li><a href="#nkTopics">专题企划</a></li>
+          <li><a href="#nkRanking">热度榜单</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>社区</h4>
+        <ul>
+          <li><a href="#nkCreators">创作者矩阵</a></li>
+          <li><a href="#nkCta">投稿报名</a></li>
+          <li><a href="#nkFaq">常见问题</a></li>
+          <li><a href="#nkNews">企业动态</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#nkTop">品牌介绍</a></li>
+          <li><a href="#nkInsight">品牌理念</a></li>
+          <li><a href="#nkNews">合作联系</a></li>
+          <li><a href="#nkTop">回到顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="nk-footer-bottom">
+      <span>© 2026 npxvip 官方网站 · 版权所有 · 持续运营中</span>
+      <span>内容均为原创或已获授权，正版高清 · 备案号示例 000000000</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== 浮层：Toast ===== -->
+<div class="nk-toast" id="nkToast" role="status" aria-live="polite"></div>
+
+<!-- ===== 浮层：通用弹窗（投稿 / 作者 / 分享 / 评论） ===== -->
+<div class="nk-modal" id="nkModal" role="dialog" aria-modal="true" aria-labelledby="nkModalTitle">
+  <div class="nk-modal-box">
+    <button class="nk-modal-close" id="nkModalClose" aria-label="关闭弹窗">×</button>
+    <h3 id="nkModalTitle">投稿 / 报名</h3>
+    <p id="nkModalDesc">填写基本信息，我们会在两个工作日内回复。</p>
+    <div id="nkModalBody"></div>
+  </div>
+</div>
+
+<button class="nk-top" id="nkTopBtn" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 公告条轮播 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll("#nkTickerRoll .nk-ticker-item"));
+  var cur = 0;
+  if (items.length > 1) {
+    setInterval(function () {
+      items[cur].classList.remove("is-on");
+      cur = (cur + 1) % items.length;
+      items[cur].classList.add("is-on");
+    }, 4200);
+  }
+
+  /* ---------- 时钟 ---------- */
+  var clock = document.getElementById("nkTickerClock");
+  function tick() {
+    var d = new Date();
+    var p = function (n) { return n < 10 ? "0" + n : "" + n; };
+    if (clock) clock.textContent = p(d.getHours()) + ":" + p(d.getMinutes());
+  }
+  tick();
+  setInterval(tick, 20000);
+
+  /* ---------- 移动端导航折叠 ---------- */
+  var navToggle = document.getElementById("nkNavToggle");
+  var nav = document.getElementById("nkNav");
+  if (navToggle && nav) {
+    navToggle.addEventListener("click", function () {
+      var open = nav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.textContent = open ? "×" : "☰";
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.tagName === "A" && window.innerWidth <= 820) {
+        nav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.textContent = "☰";
+      }
+    });
+  }
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById("nkToast");
+  var toastTimer = null;
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("is-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("is-show"); }, 2200);
+  }
+
+  /* ---------- 弹窗系统 ---------- */
+  var modal = document.getElementById("nkModal");
+  var modalTitle = document.getElementById("nkModalTitle");
+  var modalDesc = document.getElementById("nkModalDesc");
+  var modalBody = document.getElementById("nkModalBody");
+  var modalClose = document.getElementById("nkModalClose");
+  var lastFocus = null;
+
+  function openModal(title, desc, html) {
+    lastFocus = document.activeElement;
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    modalBody.innerHTML = html;
+    modal.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    var first = modalBody.querySelector("input,textarea,select,button");
+    if (first) first.focus();
+  }
+  function closeModal() {
+    modal.classList.remove("is-open");
+    document.body.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  if (modalClose) modalClose.addEventListener("click", closeModal);
+  if (modal) {
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+
+  var submitFormHTML =
+    '<div class="nk-field"><label for="nkFName">称呼</label><input id="nkFName" type="text" placeholder="例如：林先生 / 城市跑团"></div>' +
+    '<div class="nk-field"><label for="nkFContact">联系方式</label><input id="nkFContact" type="text" placeholder="邮箱或手机号"></div>' +
+    '<div class="nk-field"><label for="nkFType">类型</label><select id="nkFType"><option>投稿比赛视频</option><option>报名参赛</option><option>申请成为创作者</option><option>赛事影像合作</option></select></div>' +
+    '<div class="nk-field"><label for="nkFNote">补充说明</label><textarea id="nkFNote" placeholder="简单描述比赛名称、项目与时间"></textarea></div>' +
+    '<button class="nk-btn nk-btn-primary" id="nkFormSend" type="button" style="width:100%">提交</button>';
+
+  function bindSubmitForm() {
+    var btn = document.getElementById("nkFormSend");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var name = (document.getElementById("nkFName").value || "").trim();
+      var contact = (document.getElementById("nkFContact").value || "").trim();
+      if (!name || !contact) {
+        showToast("请填写称呼与联系方式");
+        return;
+      }
+      closeModal();
+      showToast("已收到，两个工作日内回复你");
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-modal='submit']"), function (el) {
+    el.addEventListener("click", function () {
+      openModal("投稿 / 报名", "填写基本信息，我们会在两个工作日内回复。", submitFormHTML);
+      bindSubmitForm();
+    });
+  });
+
+  /* ---------- 作者弹窗 ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-author]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var parts = btn.getAttribute("data-nk-author").split("|");
+      var html = '<div class="nk-meta-row" style="margin-top:0;margin-bottom:12px">' +
+        '<span class="nk-tag">' + parts[1] + '</span>' +
+        '<span class="nk-tag">作品 ' + parts[2] + '</span>' +
+        '<span class="nk-tag">粉丝 ' + parts[3] + '</span></div>' +
+        '<p style="font-size:13.5px;color:#c2c9dd;margin-bottom:16px">' + parts[4] + '</p>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap">' +
+        '<button class="nk-btn nk-btn-primary" id="nkAuthorFollow" type="button">关注作者</button>' +
+        '<button class="nk-btn nk-btn-ghost" id="nkAuthorMsg" type="button">发送私信</button></div>';
+      openModal(parts[0], "创作者档案 · npxvip 官方认证", html);
+      var f = document.getElementById("nkAuthorFollow");
+      if (f) {
+        var followed = false;
+        f.addEventListener("click", function () {
+          followed = !followed;
+          f.textContent = followed ? "已关注" : "关注作者";
+          showToast(followed ? "已关注该创作者" : "已取消关注");
+        });
+      }
+      var m = document.getElementById("nkAuthorMsg");
+      if (m) m.addEventListener("click", function () { showToast("私信功能需登录后使用"); });
+    });
+  });
+
+  /* ---------- 分享 ---------- */
+  function shareBoxHTML() {
+    return '<div class="nk-share-row">' +
+      '<button type="button" data-nk-share-way="微信">微信</button>' +
+      '<button type="button" data-nk-share-way="微博">微博</button>' +
+      '<button type="button" data-nk-share-way="QQ">QQ</button></div>' +
+      '<button class="nk-btn nk-btn-ghost" id="nkCopyLink" type="button" style="width:100%;margin-top:6px">复制页面链接</button>';
+  }
+  function bindShare() {
+    Array.prototype.forEach.call(modalBody.querySelectorAll("[data-nk-share-way]"), function (b) {
+      b.addEventListener("click", function () {
+        showToast("分享到" + b.getAttribute("data-nk-share-way") + "（示例）");
+      });
+    });
+    var copyBtn = document.getElementById("nkCopyLink");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var link = "npxvip 每日比赛";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(link).then(function () {
+            showToast("链接已复制");
+          }).catch(function () {
+            showToast("复制失败，请手动选中");
+          });
+        } else {
+          showToast("当前环境不支持自动复制");
+        }
+      });
+    }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-share]"), function (el) {
+    el.addEventListener("click", function () {
+      openModal("分享 npxvip 每日比赛", "把喜欢的比赛与专题分享给同好。", shareBoxHTML());
+      bindShare();
+    });
+  });
+
+  /* ---------- 点赞 / 收藏 ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-like]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var on = btn.classList.toggle("is-liked");
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      var cnt = btn.querySelector("[data-nk-like-count]");
+      if (cnt) {
+        var n = parseInt(cnt.textContent.replace(/,/g, ""), 10) || 0;
+        n = on ? n + 1 : n - 1;
+        if (n < 0) n = 0;
+        cnt.textContent = n;
+      }
+      showToast(on ? "已点赞" : "已取消点赞");
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-save]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var on = btn.classList.toggle("is-saved");
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.textContent = on ? "♥" : "♡";
+      showToast(on ? "已加入收藏分组" : "已取消收藏");
+    });
+  });
+
+  /* ---------- 评论弹窗 ---------- */
+  var commentHTML =
+    '<div class="nk-field"><label for="nkCmt">写下你的观赛感受</label><textarea id="nkCmt" placeholder="例如：最后一公里的配速变化讲得很清楚……"></textarea></div>' +
+    '<button class="nk-btn nk-btn-primary" id="nkCmtSend" type="button" style="width:100%">发布评论</button>';
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-comment]"), function (btn) {
+    btn.addEventListener("click", function () {
+      openModal("评论区", "评论会进入当日比赛的社区讨论区。", commentHTML);
+      var send = document.getElementById("nkCmtSend");
+      if (send) {
+        send.addEventListener("click", function () {
+          var v = (document.getElementById("nkCmt").value || "").trim();
+          if (!v) { showToast("评论内容不能为空"); return; }
+          closeModal();
+          showToast("评论已发布，感谢你的分享");
+        });
+      }
+    });
+  });
+
+  /* ---------- 搜索 + 标签筛选 ---------- */
+  var searchInput = document.getElementById("nkSearchInput");
+  var searchBtn = document.getElementById("nkSearchBtn");
+  var searchHint = document.getElementById("nkSearchHint");
+  var videoItems = Array.prototype.slice.call(document.querySelectorAll("#nkVideos .nk-video-item"));
+
+  function doSearch() {
+    var q = (searchInput.value || "").trim().toLowerCase();
+    var hit = 0;
+    videoItems.forEach(function (item) {
+      var text = item.textContent.toLowerCase();
+      var match = !q || text.indexOf(q) > -1;
+      item.style.display = match ? "" : "none";
+      if (match) hit++;
+    });
+    if (searchHint) searchHint.hidden = !(q && hit === 0);
+    if (q) showToast(hit > 0 ? "找到 " + hit + " 条相关比赛" : "暂无匹配内容");
+  }
+  if (searchBtn) searchBtn.addEventListener("click", doSearch);
+  if (searchInput) {
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); doSearch(); }
+    });
+    searchInput.addEventListener("input", function () {
+      if (!searchInput.value) {
+        videoItems.forEach(function (item) { item.style.display = ""; });
+        if (searchHint) searchHint.hidden = true;
+      }
+    });
+  }
+
+  /* ---------- 榜单切换 ---------- */
+  var rankData = {
+    hot: [
+      ["城市夜跑积分赛第三轮 · 最后一公里如何翻盘", "98.2"],
+      ["三人篮球挑战赛 · 加时赛 38 秒三次攻防全解析", "94.7"],
+      ["比赛幕后 · 一场 200 人赛事是怎么被拍完的", "91.5"],
+      ["新人挑战赛首秀 · 第一次上场比赛装备清单", "88.9"],
+      ["羽毛球双打联赛第 7 场 · 网前封网三条铁律", "86.4"],
+      ["社区乒乓球积分赛 · 业余选手发球变化合集", "84.1"]
+    ],
+    new: [
+      ["球馆闭馆前的最后一小时训练记录", "86.3"],
+      ["企业友谊赛第一场 · 零基础队员的首秀", "83.8"],
+      ["青少年组接力赛 · 交接棒的三次失误", "81.2"],
+      ["周末羽毛球混双邀请赛速览", "79.6"],
+      ["社区飞盘联赛 · 新手最容易忽略的跑位", "77.4"],
+      ["场馆改造后的第一场比赛", "75.9"]
+    ],
+    word: [
+      ["比赛幕后 · 影像流程公开课", "9.6"],
+      ["第一次上场比赛装备清单", "9.5"],
+      ["城市夜跑第三轮节奏解析", "9.4"],
+      ["球台边的日常训练记录", "9.2"],
+      ["网前封网三条铁律", "9.0"],
+      ["业余选手发球变化合集", "8.8"]
+    ]
+  };
+  var rankBody = document.getElementById("nkRankBody");
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nk-rank]"), function (tab) {
+    tab.addEventListener("click", function () {
+      Array.prototype.forEach.call(document.querySelectorAll("[data-nk-rank]"), function (t) {
+        t.classList.remove("is-active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("is-active");
+      tab.setAttribute("aria-selected", "true");
+      var key = tab.getAttribute("data-nk-rank");
+      var rows = rankData[key] || [];
+      var html = "";
+      rows.forEach(function (r, i) {
+        var no = i + 1 < 10 ? "0" + (i + 1) : "" + (i + 1);
+        html += '<div class="nk-rank-row"><span class="nk-rank-no">' + no + '</span>' +
+          '<span class="nk-rank-name">' + r[0] + '</span>' +
+          '<span class="nk-rank-heat">' + r[1] + '</span></div>';
+      });
+      if (rankBody) rankBody.innerHTML = html;
+    });
+  });
+
+  /* ---------- 回到顶部 ---------- */
+  var topBtn = document.getElementById("nkTopBtn");
+  window.addEventListener("scroll", function () {
+    if (!topBtn) return;
+    if (window.scrollY > 520) topBtn.classList.add("is-show");
+    else topBtn.classList.remove("is-show");
+  }, { passive: true });
+  if (topBtn) {
+    topBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+})();
+</script>
+</body>
+            </html>
